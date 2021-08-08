@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/hotel', [HotelController::class, 'index']);
+Route::get('/hotel/{id}', [HotelController::class, 'show']);
 Route::post('/hotel/create', [HotelController::class, 'create']);
 
 Route::post('hotel/image/create', [ImageController::class, 'create']);

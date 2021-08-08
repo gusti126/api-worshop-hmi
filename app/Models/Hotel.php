@@ -13,7 +13,7 @@ class Hotel extends Model
         'nama', 'thumbnail', 'alamat', 'deskripsi'
     ];
 
-    public function hotel()
+    public function image()
     {
         return $this->hasMany('App\Models\ImageHotel');
     }

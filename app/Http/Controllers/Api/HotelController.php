@@ -20,6 +20,23 @@ class HotelController extends Controller
         ], 200);
     }
 
+    public function show($id)
+    {
+        $data = Hotel::with('image')->find($id);
+        if (!$data) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'data hotel not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'show detail hotel',
+            'data' => $data
+        ], 200);
+    }
+
     public function create(Request $request)
     {
         $rules = [

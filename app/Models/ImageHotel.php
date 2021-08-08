@@ -11,4 +11,9 @@ class ImageHotel extends Model
     protected $fillable = [
         'hotel_id', 'image'
     ];
+
+    public function hotel()
+    {
+        return $this->belongsTo('App\Models\Hotel');
+    }
 }
