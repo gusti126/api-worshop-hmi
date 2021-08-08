@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,10 +33,15 @@ class AuthentikasiController extends Controller
         $user = User::create($data);
         $token = $user->createToken('API Token')->plainTextToken;
 
+        $profile = Profile::create([
+            'user_id' => $user->id
+        ]);
+
         return response()->json([
             'status' => 'success',
             'message' => 'register berhasil',
             'data' => $user,
+            'profile' => $profile,
             'token' => $token
         ], 201);
     }

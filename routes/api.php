@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\HotelController;
 use App\Http\Controllers\Api\Hotel\ImageController;
 use App\Http\Controllers\Api\User\AuthentikasiController;
+use App\Http\Controllers\Api\User\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 // auth
 Route::post('register', [AuthentikasiController::class, 'register']);
 Route::post('login', [AuthentikasiController::class, 'login']);
+
+Route::get('profile', [ProfileController::class, 'index'])->middleware('auth:sanctum');;
+Route::post('profile/update', [ProfileController::class, 'update'])->middleware('auth:sanctum');;
 
 Route::get('/hotel', [HotelController::class, 'index']);
 Route::get('/hotel/{id}', [HotelController::class, 'show']);
